@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "TaxesMath",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

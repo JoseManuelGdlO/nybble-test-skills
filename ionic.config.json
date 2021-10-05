@@ -1,0 +1,7 @@
+{
+  "name": "TaxesMath",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "ionic-angular"
+}
