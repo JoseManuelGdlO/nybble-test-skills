@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
+import { DataProvider } from '../../providers/data/data';
 import { WeatherService } from '../../providers/weather-service/weather-service';
+import { ResultsPage } from '../results/results';
 
 @Component({
   selector: 'page-home',
@@ -20,7 +22,8 @@ export class HomePage implements OnInit {
   constructor(
     public navCtrl: NavController,
     public weatherService: WeatherService,
-    public toastController: ToastController
+    public toastController: ToastController,
+    public dataProvider: DataProvider
     ) {
 
   }
@@ -54,12 +57,13 @@ export class HomePage implements OnInit {
     const tax = parseInt(this.selectTax);
 
     let result = 1 + tax / 100;
-    this.taxToAadd = result.toString();
     result = net * result;
 
     result = Math.round((result) * 100) / 100;
 
     this.inputTotal = result.toString()
+
+    this.taxToAadd = (result - net).toString();
 
   }
 
@@ -81,7 +85,7 @@ export class HomePage implements OnInit {
       return;
     }
 
-    this.taxes.push(
+    this.dataProvider.taxes.push(
       { invoiceNumber: this.inputInoviceNumber,
         net: this.inputNet,
         taxPersent: this.selectTax,
@@ -100,7 +104,11 @@ export class HomePage implements OnInit {
   }
 
   removeTax(index) {
-    this.taxes.splice(index, 1);
+    this.dataProvider.taxes.splice(index, 1);
+  }
+
+  goToResults() {
+    this.navCtrl.push(ResultsPage);
   }
 
 

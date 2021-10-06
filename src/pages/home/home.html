@@ -51,7 +51,7 @@
       </ion-row>
     </ion-grid>
 
-    <ion-grid *ngFor="let tax of taxes; let i = index;" style="margin-bottom: 20px;" class="pad-0 mar-0">
+    <ion-grid *ngFor="let tax of dataProvider.taxes; let i = index;" style="margin-bottom: 20px;" class="pad-0 mar-0">
       <ion-row class="pad-0 mar-0 rowTitleTable">
         <ion-col class="pad-0 mar-0 center colTable">
           <h6 style="color: white;" class="titleTable">Invoice Number</h6>
@@ -73,7 +73,7 @@
           <h6 class="titleTable">% Tax</h6>
         </ion-col>
         <ion-col class="pad-0 mar-0 tx-right colTable">
-          <h6 class="titleTable pad-r-10"> ${{tax.taxPersent | number:'1.2-2'}} </h6>
+          <h6 class="titleTable pad-r-10"> %{{tax.taxPersent }} </h6>
         </ion-col>
       </ion-row>
       <ion-row class="pad-0 mar-0">
@@ -99,7 +99,7 @@
       </ion-row>
     </ion-grid>
     <div class="m-t-b-15">
-      <nybble-button text="Process and Continue" background="#0098ff"></nybble-button>
+      <nybble-button (onClick)="goToResults()" text="Process and Continue" background="#0098ff"></nybble-button>
     </div>
     <div class="weatherClass">
       <h5 class="color-white">El clima estos dias sera:</h5>

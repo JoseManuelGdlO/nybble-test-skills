@@ -10,11 +10,14 @@ import { ComponentsModule } from '../components/components.module';
 import { HttpService } from '../providers/http-service/http-service';
 import { WeatherService } from '../providers/weather-service/weather-service';
 import { HttpClientModule } from '@angular/common/http';
+import { ResultsPage } from '../pages/results/results';
+import { DataProvider } from '../providers/data/data';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ResultsPage
   ],
   imports: [
     BrowserModule,
@@ -25,14 +28,16 @@ import { HttpClientModule } from '@angular/common/http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ResultsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpService,
-    WeatherService
+    WeatherService,
+    DataProvider
   ]
 })
 export class AppModule {}
